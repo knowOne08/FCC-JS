@@ -19,7 +19,7 @@
       Three special numbers in javascript Inifinity -Infinity and NaN (not a number).
       You get NaN for indeterminate forms in maths. 
     
-    * **Strings** is anything within ('string') or ("string") or (`string`).
+    * **Strings** is anything within ('string') or ("string") or (\`string\`).
       to get new line in string we use (\n) this is an **escape character**
       **Escape Characters** start with (\) and are used to manupulating a string without breaking it format
 
