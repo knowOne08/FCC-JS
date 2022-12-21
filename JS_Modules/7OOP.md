@@ -61,26 +61,69 @@
     }
     ```
 
-2.  
+6.  ***.this*** inside the constructor always refers to the object being created.
+    Creating instances of object created.
     ```javascript
+    function Dog() {
+    this.name = "Rupert";
+    this.color = "brown";
+    this.numLegs = 4;
+    }
+    // Only change code below this line
+    let hound = new Dog();
     ```
 
-2.  
+7.  Making constructor to accept parameters
     ```javascript
+    function Dog() {
+    this.name = "Rupert";
+    this.color = "brown";
+    this.numLegs = 4;
+    }
+    // Only change code below this line
+    let hound = new Dog();
     ```
 
-2.  
+8.  New object created by constuctor is called the instance of the constructor.
+    ***instanceof*** allows you to compare an object to a constructor, returning true or false based on whether or not that object was created with the constructor. 
     ```javascript
+    function House(numBedrooms) {
+    this.numBedrooms = numBedrooms;
+    }
+
+    // Only change code below this line
+    let myHouse = new House(2);
+
+    myHouse instanceof House;
     ```
 
-2.  
+9.  The property directly defined on instance object are called **Own Properties**
     ```javascript
+    function Bird(name) {
+    this.name = name;
+    this.numLegs = 2;
+    }
+
+    let canary = new Bird("Tweety");
+    let ownProps = [];
+    // Only change code below this line
+    for(let property in canary){
+    if(canary.hasOwnProperty(property)){
+        ownProps.push(property);
+    }
+    }
+    console.log(ownProps);
     ```
 
-2.  
+10. Use Prototype Properties to Reduce Duplicate Code.
+    Properties in the prototype are shared among ALL instances of Constructor.
     ```javascript
-    ```
+    function Dog(name) {
+    this.name = name;
+    }
 
-2.  
-    ```javascript
+
+    Dog.prototype.numLegs = 2;
+    // Only change code above this line
+    let beagle = new Dog("Snoopy");
     ```
