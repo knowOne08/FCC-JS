@@ -127,3 +127,100 @@
     // Only change code above this line
     let beagle = new Dog("Snoopy");
     ```
+
+11. Adding all properties to array (both own property and prototype property)
+    ```Javascript
+    function Dog(name) {
+    this.name = name;
+    }
+
+    Dog.prototype.numLegs = 4;
+
+    let beagle = new Dog("Snoopy");
+
+    let ownProps = [];
+    let prototypeProps = [];
+
+    // Only change code below this line
+    for(let property in beagle){
+    if(beagle.hasOwnProperty(property)){
+        ownProps.push(property);
+    }else{
+        prototypeProps.push(property);
+    }
+    }
+    console.log(ownProps);
+    console.log(prototypeProps);
+
+    ```
+
+12. Constructor property of an instance.
+    **Note:** Since the constructor property can be overwritten (which will be covered in the next two challenges) it’s generally better to use the instanceof method to check the type of an object.
+    ```Javascript
+    function Dog(name) {
+    this.name = name;
+    }
+
+    // Only change code below this line
+    function joinDogFraternity(candidate) {
+    if(candidate.constructor === Dog){
+        return true;
+    }else{
+        return false;
+    }
+    }
+    ```
+
+13. You can add prototype  properties all at once rather than adding single property 
+    each time. 
+    ```Javascript
+    function Dog(name) {
+    this.name = name;
+    }
+
+    Dog.prototype = {
+    // Only change code below this line
+    numLegs: 2,
+    eat: () => {console.log("eat")},
+    describe: () => {console.log("name is " + this.name)}
+    };
+    ```
+
+14. Manually setting the prototype to a new object erases the constructor property.This 
+    property can be used to check which constructor function created the instance, but since the property has been overwritten, it now gives false results.
+    ```Javascript
+    function Dog(name) {
+    this.name = name;
+    }
+
+    // Only change code below this line
+    Dog.prototype = {
+
+    constructor: Dog, //Constructor property on Dog prototype
+    numLegs: 4,
+    eat: function() {
+        console.log("nom nom nom");
+    },
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+    };
+
+    let dog = new Dog();
+
+    ```
+
+15. An object inherits its prototype directly from the constructor function that created 
+    it. 
+    We can check this by ***.isPrototypeOf*** method
+    ```Javascript
+    function Dog(name) {
+    this.name = name;
+    }
+
+    let beagle = new Dog("Snoopy");
+
+    // Only change code below this line
+
+    Dog.prototype.isPrototypeOf(beagle)
+    ```
