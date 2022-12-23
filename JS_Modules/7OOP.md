@@ -224,3 +224,49 @@
 
     Dog.prototype.isPrototypeOf(beagle)
     ```
+
+16. Don't Repeat Yourself (DRY) principle. 
+    If you have a block of code which is common in all the objects you can define it in parent object(supertype).
+    ```javascript
+    function Animal(){ };
+    Animal.prototype = {
+    constructor: Animal,
+    eat: () => {return "nom nom nom"}
+    }
+    function Cat(name) {
+    this.name = name;
+    }
+
+    Cat.prototype = {
+    constructor: Cat
+    };
+
+    function Bear(name) {
+    this.name = name;
+    }
+
+    Bear.prototype = {
+    constructor: Bear,
+    };
+
+    ```
+
+16. 
+    ```javascript
+
+    ```
+
+16. 
+    ```javascript
+
+    ```
+
+16. 
+    ```javascript
+
+    ```
+
+16. 
+    ```javascript
+
+    ```
