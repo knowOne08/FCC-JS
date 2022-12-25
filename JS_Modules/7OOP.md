@@ -251,22 +251,167 @@
 
     ```
 
-16. 
+17. Object.create(obj) creates a new object, and sets obj as the new object's prototype
+    Thi will inherit all the properties from parent Object or supertype
     ```javascript
+    function Animal() { }
+
+    Animal.prototype = {
+    constructor: Animal,
+    eat: function() {
+        console.log("nom nom nom");
+    }
+    };
+
+    // Only change code below this line
+
+    let duck = Object.create(Animal.prototype);
+    let beagle = Object.create(Animal.prototype); 
+    ```
+
+18. Setting the Child's Prototype to an Instance of the Parent.
+    ```javascript
+    function Animal() { }
+
+    Animal.prototype = {
+    constructor: Animal,
+    eat: function() {
+        console.log("nom nom nom");
+    }
+    };
+
+    function Dog() { }
+
+    // Only change code below this line
+
+    Dog.prototype = Object.create(Animal.prototype)
+
+    let beagle = new Dog();
+    ```
+
+19. When object inherits a prototype from supertype it also inherits its supertypes 
+    Construction method.
+    Manually setting the constructor property of Object to it supertype
+    ```javascript
+    function Animal() { }
+    function Bird() { }
+    function Dog() { }
+
+    Bird.prototype = Object.create(Animal.prototype);
+    Dog.prototype = Object.create(Animal.prototype);
+
+    // Only change code below this line
+
+    Bird.prototype.constructor = Bird;
+    Dog.prototype.constructor = Dog;
+
+    let duck = new Bird();
+    let beagle = new Dog();
 
     ```
 
-16. 
+20. Constructor function can still have its own methods in addition to inherited methods 
+    from supertype
+    ```javascript 
+    function Animal() { }
+    Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+    function Dog() { }
+
+    // Only change code below this line
+
+    Dog.prototype = Object.create(Animal.prototype)
+    Dog.prototype.constructor = Dog;
+    Dog.prototype.bark = function() {
+    console.log("Woof!");
+    };
+    // Only change code above this line
+
+    let beagle = new Dog();
+    ```
+
+21. It's possible to override an inherited method.
     ```javascript
+    function Bird() { }
+
+    Bird.prototype.fly = function() { return "I am flying!"; };
+
+    function Penguin() { }
+    Penguin.prototype = Object.create(Bird.prototype);
+    Penguin.prototype.constructor = Penguin;
+
+    // Only change code below this line
+
+    Penguin.prototype.fly = function() {
+    return "Alas, this is a flightless bird.";
+    };
+
+    // Only change code above this line
+
+    let penguin = new Penguin();
+    console.log(penguin.fly());
+    ```
+
+23. Use a Mixin to Add Common Behavior Between Unrelated Objects
+    ```javascript
+    let bird = {
+    name: "Donald",
+    numLegs: 2
+    };
+
+    let boat = {
+    name: "Warrior",
+    type: "race-boat"
+    };
+
+    // Add your code below this line
+    let glideMixin = function(obj) {
+    obj.glide = function() {
+        console.log("Gliding!");
+    };
+    };
+    glideMixin(bird);
+    glideMixin(boat);
+    ```
+
+24. Using Closure to Protect Properties Within an Object from Being Modified Externally
+    ```javascript
+    function Bird() {
+  let weight = 15;
+
+  this.getWeight = function() {
+    return weight;
+  };
+    }
 
     ```
 
-16. 
+25. Immediately invoked function expression or IIFE.
+    Executing function as soon as it is declared
     ```javascript
+    (function () {
+    console.log("A cozy nest is ready");
+    })();
+
 
     ```
 
-16. 
+26. An immediately invoked function expression (IIFE) is often used to group related 
+    functionality into a single object or module
     ```javascript
-
+    
+    let funModule = (function() {
+    return {
+        isCuteMixin: function(obj) {
+        obj.isCute = function() {
+            return true;
+        };
+        },
+        singMixin: function(obj) {
+        obj.sing = function() {
+            console.log("Singing to an awesome tune");
+        };
+        }
+    };
+    })();
     ```
