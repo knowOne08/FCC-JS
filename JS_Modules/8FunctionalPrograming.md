@@ -365,3 +365,81 @@
     return newArray;
     };
     ```
+
+11. The slice method returns a copy of certain elements of an array. It can take two 
+    arguments, the first gives the index of where to begin the slice, the second is the index for where to end the slice **(and end is non-inclusive)**.
+    ```javascript
+    function sliceArray(anim, beginSlice, endSlice) {
+    // Only change code below this line
+    return anim.slice(beginSlice,endSlice)
+
+    // Only change code above this line
+    }
+
+    const inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+    sliceArray(inputAnim, 1, 3);
+    ```
+
+12. Splice takes arguments for the index of where to start removing items, then the 
+    number of items to remove. If the second argument is not provided, the default is to remove items through the end. However, the splice method mutates the original array it is called on.
+    ```javascript
+    function nonMutatingSplice(cities) {
+    // Only change code below this line
+    return cities.slice(0,3);
+
+    // Only change code above this line
+    }
+
+    const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+    nonMutatingSplice(inputCities);
+    ```
+
+13. For arrays, ***concat*** is called on one, then another array is provided as the 
+    argument to concat, which is added to the end of the first array. It returns a new array and does not mutate either of the original arrays.
+    ```javascript
+    function nonMutatingConcat(original, attach) {
+    // Only change code below this line
+    return original.concat(attach)
+
+    // Only change code above this line
+    }
+
+    const first = [1, 2, 3];
+    const second = [4, 5];
+    nonMutatingConcat(first, second);
+    ```
+
+14. Functional programming is all about creating and using ***non-mutating*** functions.
+    Using concat as a non-mutating push
+    ```javascript
+    function nonMutatingPush(original, newItem) {
+    // Only change code below this line
+    let arr = [...original]
+    return arr.concat(newItem);
+
+    // Only change code above this line
+    }
+
+    const first = [1, 2, 3];
+    const second = [4, 5];
+    nonMutatingPush(first, second);
+    ```
+
+15. reduce(), is the most general of all array operations in JavaScript. You can solve.
+    almost any array processing problem using the reduce method. filter and map can be derived as special applications of reduce
+    ```javascript
+    function getRating(watchList) {
+    // Only change code below this line
+    const averageRating = watchList
+    .filter(film => film.Director === "Christopher Nolan")
+    .map(film => Number(film.imdbRating))
+    .reduce((sumOfRatings, rating) => sumOfRatings + rating) /
+    watchList.filter(film => film.Director === "Christopher Nolan").length;
+
+
+    // Only change code above this line
+    return averageRating;
+    }
+
+    console.log(getRating(watchList));
+    ```
