@@ -443,3 +443,79 @@
 
     console.log(getRating(watchList));
     ```
+
+16. Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
+    ```javascript
+    const squareList = arr => {
+    // Only change code below this line
+    return arr.filter(num => num > 0   && num % parseInt(num)=== 0).map(num => Math.pow(num,2));
+    // Only change code above this line
+    };
+
+    const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+    console.log(squaredIntegers);
+    ```
+
+17. The sort method sorts the elements of an array according to the callback function.
+    
+    JavaScript's default sorting method is by string Unicode point value, which may return unexpected results. Therefore, it is encouraged to provide a callback function to specify how to sort the array items.
+
+    When such a callback function, normally called compareFunction, is supplied, the array elements are sorted according to the return value of the compareFunction.
+
+    If compareFunction(a,b) returns a value less than 0 for two elements a and b, then a will come before b. And vice versa.
+    If compareFunction(a,b) returns a value equal to 0 for two elements a and b, then a and b will remain unchanged.
+    ```javascript
+    function alphabeticalOrder(arr) {
+    // Only change code below this line
+
+    return arr.sort((a,b)=>{
+        return a===b ? 0 : a<b ? -1 : 1;
+    })
+    // Only change code above this line
+    }
+
+    alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
+    ```
+
+18. sort() is a mutating method. Creating a non-mutating sort() method
+    ```javascript
+    const globalArray = [5, 6, 3, 2, 9];
+
+    function nonMutatingSort(arr) {
+    // Only change code below this line
+    return [].concat(arr).sort((a,b)=>{
+        return a-b;
+    })
+
+    // Only change code above this line
+    }
+
+    nonMutatingSort(globalArray);
+    ```
+
+19. The split method splits a string into an array of strings. It takes an argument for 
+    the delimiter, which can be a character to use to break up the string or a regular expression 
+    ```javascript
+    function splitify(str) {
+    // Only change code below this line
+
+    return str.split(/\W/)  // Only change code above this line
+    }
+
+    splitify("Hello World,I-am code");
+    ```
+
+20. The join method is used to join the elements of an array together to create a 
+    string. It takes an argument for the delimiter that is used to separate the array elements in the string. 
+
+    It's like inverse of .split()
+    ```javascript
+    function sentensify(str) {
+    // Only change code below this line
+
+    return str.split(/\W/).join(" ") 
+    // Only change code above this line
+    }
+
+    sentensify("May-the-force-be-with-you");
+    ```
