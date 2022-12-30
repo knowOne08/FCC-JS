@@ -505,8 +505,8 @@
     splitify("Hello World,I-am code");
     ```
 
-20. The join method is used to join the elements of an array together to create a 
-    string. It takes an argument for the delimiter that is used to separate the array elements in the string. 
+20. The join method is used to join the     
+    elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string. 
 
     It's like inverse of .split()
     ```javascript
@@ -519,3 +519,76 @@
 
     sentensify("May-the-force-be-with-you");
     ```
+
+21. Apply Functional Programming to Convert 
+    Strings to URL Slugs
+    ```javascript
+    // Only change code below this line
+    function urlSlug(title) {
+
+    return title
+        .toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .join("-");
+    }
+    // Only change code above this line
+    urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
+    ```
+
+20. The every method works with arrays to check if every element passes a particular 
+    test. It returns a Boolean value - true if all values meet the criteria, false if not.
+
+
+    ```javascript
+    function checkPositive(arr) {
+    // Only change code below this line
+
+        return arr.every((ele)=>{
+        return ele > 0;
+        });
+    // Only change code above this line
+    }
+
+    checkPositive([1, 2, 3, -4, 5]);
+    ```
+
+23. The some method works with arrays to check if any element passes a particular test. 
+    It returns a Boolean value - true if any of the values meet the criteria, false if not.    
+    ```javascript
+    function checkPositive(arr) {
+  // Only change code below this line
+
+  
+    return arr.some((ele)=>{
+    return ele > 0;
+    });
+  // Only change code above this line
+}
+
+checkPositive([1, 2, 3, -4, 5]);
+    ```
+
+24. The arity of a function is the number of arguments it requires. ***Currying*** a 
+    function means to convert a function of N arity into N functions of arity 1.
+
+    In other words, it restructures a function so it takes one argument, then returns another function that takes the next argument, and so on.
+
+    Similarly, ***partial application*** can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
+
+
+    ```javascript
+    function add(x) {
+    // Only change code below this line
+    return (y) =>{
+        return (z)=>{
+        return x+y+z;
+        }
+    }
+
+    // Only change code above this line
+    }
+
+    add(10)(20)(30);
+    ```
+
