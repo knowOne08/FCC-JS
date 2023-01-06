@@ -39,3 +39,47 @@
     destroyer([1, 2, 3, 1, 2, 3], 2, 3);
     ```
 
+4.  A function that looks through an array of objects (first argument) and returns an 
+    array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+    ```javascript
+    function whatIsInAName(collection, source) {
+   
+    const souceKeys = Object.keys(source);
+
+    // filter the collection
+    return collection.filter(obj => {
+        for (let i = 0; i < souceKeys.length; i++) {
+        if (!obj.hasOwnProperty(souceKeys[i]) ||
+            obj[souceKeys[i]] !== source[souceKeys[i]]) {
+            return false;
+        }
+        }
+        return true;
+    });
+    }
+
+    ```
+
+5.  Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+    ```javascript
+    function spinalCase(str) {
+    str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+    return str.replace(/\s+|_+/g,"-").toLowerCase()
+    }
+
+    spinalCase('This Is Spinal Tap');
+    ```
+
+6.  Pig Latin
+    ```javascript
+    function translatePigLatin(str) {
+    if (str.match(/^[aeiou]/)) return str + "way";
+
+    const consonantCluster = str.match(/^[^aeiou]+/)[0];
+    return str.substring(consonantCluster.length) + consonantCluster + "ay";
+    }
+
+
+    translatePigLatin("consonant");
+    ```
+
