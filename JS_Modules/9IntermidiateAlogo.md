@@ -256,3 +256,123 @@
 
     dropElements([1, 2, 3], function(n) {return n < 3; });
     ```
+
+16. Flattening an array 
+    ```javascript
+    function steamrollArray(arr) {
+    const flattenedArray = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+
+        flattenedArray.push(...steamrollArray(arr[i]));
+        } else {
+
+        flattenedArray.push(arr[i]);
+        }
+    }
+    return flattenedArray;
+    };
+
+    // test here
+    steamrollArray([1, [2], [3, [[4]]]]);
+
+    ```
+ 
+17. binary to English
+    ```javascript
+    function binaryAgent(str) {
+    var biString = str.split(" ");
+    var uniString = [];
+
+
+
+    for (var i = 0; i < biString.length; i++) {
+        uniString.push(String.fromCharCode(parseInt(biString[i], 2)));
+    }
+
+    // we then simply join the string
+    return uniString.join("");
+    }
+
+
+    binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+    ```
+ 
+18. Check if the predicate (second argument) is truthy on all elements of a collection 
+    (first argument).
+    ```javascript
+    function truthCheck(collection, pre) {
+    return collection.every(function (element) {
+        return element.hasOwnProperty(pre) && Boolean(element[pre]);
+    });
+    }
+
+    truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot");
+    ```
+ 
+19. Create a function that sums two arguments together. If only one argument is 
+    provided, then return a function that expects one argument and returns the sum. 
+    ```javascript
+    function addTogether() {
+    const [first, second] = arguments;
+    if (typeof(first) !== "number")
+        return undefined;
+    if (arguments.length === 1)
+        return (second) => addTogether(first, second);
+    if (typeof(second) !== "number")
+        return undefined;
+    return first + second;
+    }
+
+    addTogether(2,3);
+    ```
+ 
+20. The methods that take an argument must accept only one argument and it has to be a 
+    string. These methods must be the only available means of interacting with the object.
+    ```javascript
+    const Person = function(firstAndLast) {
+    let fullName = firstAndLast;
+
+    this.getFirstName = function() {
+        return fullName.split(" ")[0];
+    };
+
+    this.getLastName = function() {
+        return fullName.split(" ")[1];
+    };
+
+    this.getFullName = function() {
+        return fullName;
+    };
+
+    this.setFirstName = function(name) {
+        fullName = name + " " + fullName.split(" ")[1];
+    };
+
+    this.setLastName = function(name) {
+        fullName = fullName.split(" ")[0] + " " + name;
+    };
+
+    this.setFullName = function(name) {
+        fullName = name;
+    };
+    };
+
+    const bob = new Person("Bob Ross");
+    console.log(bob.getFullName());
+    ```
+ 
+21. Return a new array that transforms the elements' average altitude into their orbital 
+    periods (in seconds). 
+    ```javascript
+    function orbitalPeriod(arr) {
+    const GM = 398600.4418;
+    const earthRadius = 6367.4447;
+    return arr.map(({ name, avgAlt }) => {
+        const earth = earthRadius + avgAlt;
+        const orbitalPeriod = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earth, 3)/GM));
+        return { name, orbitalPeriod };
+    });
+    }
+    orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
+    ```
